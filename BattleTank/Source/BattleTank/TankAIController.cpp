@@ -27,11 +27,15 @@ void ATankAIController::BeginPlay()
 	
 }
 
-/*void ATankAIController::Tick(float DeltaTime)
+void ATankAIController::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	UE_LOG(LogTemp, Warning, TEXT("Tick is ticking!"))
-}*/
+	if (!GetPlayerTank()) { return; }
+	else
+	{
+		GetControlledTank()->AimAt(GetPlayerTank()->GetActorLocation());
+	}
+}
 
 ATank *ATankAIController::GetControlledTank() const
 {
