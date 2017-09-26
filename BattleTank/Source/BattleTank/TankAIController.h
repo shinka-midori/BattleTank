@@ -9,7 +9,8 @@
 /**
  * 
  */
-class ATank;
+
+class UTankAimingComponent;
 
 UCLASS()
 class BATTLETANK_API ATankAIController : public AAIController
@@ -23,6 +24,7 @@ public:
 
 private:
 	// How close can the AI tank get
-	float AcceptanceRadius = 3000;
+	float AcceptanceRadius = 3000;	
 
+	UTankAimingComponent* AimingComponent = nullptr;
 };
