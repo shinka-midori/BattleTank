@@ -23,6 +23,7 @@ public:
 	UFUNCTION(BLueprintCallable, Category = Input)
 	void IntendTurnRight(float Throw);	
 
+	// Called from the pathfinding logic by the AI controllers
 	virtual void RequestDirectMove(const FVector &, bool) override;
 
 private:
