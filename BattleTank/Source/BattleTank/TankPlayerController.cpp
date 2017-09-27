@@ -26,7 +26,7 @@ void ATankPlayerController::AimTowardsCrosshair()
 	FVector OutHitLocation;
 	if (GetSightRayHitLocation(OutHitLocation))
 	{
-		 
+		if (!ensure(AimingComponent)) { return; }
 		AimingComponent->AimAt(OutHitLocation);		
 	}
 }

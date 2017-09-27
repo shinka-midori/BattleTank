@@ -33,7 +33,4 @@ void UTankMovementComponent::RequestDirectMove(const FVector & MoveVelocity, boo
 
 	auto RightThrow = FVector::CrossProduct(TankForward, AIForwardIntention).Z;
 	IntendTurnRight(RightThrow);
-
-	//auto Time = GetWorld()->GetTimeSeconds();
-	//UE_LOG(LogTemp, Warning, TEXT("Cross product: %s"), *ThrowRight.ToString())
 }
