@@ -48,6 +48,7 @@ public:
 
 	void AimAt(FVector);
 	bool IsBarrelMoving();
+	EFiringState GetFiringState();
 
 private:
 	UTankBarrel* Barrel = nullptr;
