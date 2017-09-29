@@ -36,7 +36,7 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Firing")
 	void Fire();
 	UFUNCTION(BlueprintCallable, Category = "Firing")
-	int GetRoundsLeft() const;
+	int32 GetRoundsLeft() const;
 
 protected:
 	// Called when the game starts
@@ -57,14 +57,19 @@ public:
 private:
 	UTankBarrel* Barrel = nullptr;
 	UTankTurret* Turret = nullptr;
-	UPROPERTY(EditDefaultsOnly, Category = "Firing")
-	float LaunchSpeed = 4000;
-	UPROPERTY(EditDefaultsOnly, Category = Setup)
+
+	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 	TSubclassOf<AProjectile> ProjectileBlueprint;
-	FVector AimDirection;
+	
+	UPROPERTY(EditDefaultsOnly, Category = "Firing")
+	float LaunchSpeed = 4000;	
+	UPROPERTY(EditDefaultsOnly, Category = "Firing")
+	int32 RoundsLeft = 5;
+	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 	float ReloadTimeInSeconds = 3;
-	double LastFireTime = 0;
-	int RoundsLeft = 5;
+	
+	FVector AimDirection;	
+	double LastFireTime = 0;	
 
 	void MoveBarrelTowards(FVector);	
 };

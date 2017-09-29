@@ -5,6 +5,9 @@
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Particles/ParticleSystemComponent.h"
+#include "Components/StaticMeshComponent.h"
+#include "PhysicsEngine/RadialForceComponent.h"
 #include "Projectile.generated.h"
 
 UCLASS()
@@ -25,8 +28,21 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	void LaunchProjectile(float);
+	void OnTimerExpire();
+	
+	UFUNCTION()
+	void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit);
 
 private:
-	UProjectileMovementComponent *ProjectileMovement = nullptr;
-	
+	UProjectileMovementComponent* ProjectileMovement = nullptr;
+	UPROPERTY(VisibleAnywhere, category = "Components")
+	UStaticMeshComponent* CollisionMesh = nullptr;
+	UPROPERTY(VisibleAnywhere, category = "Components")
+	UParticleSystemComponent* LaunchBlast = nullptr;
+	UPROPERTY(VisibleAnywhere, category = "Components")
+	UParticleSystemComponent* ImpactBlast = nullptr;
+	UPROPERTY(VisibleAnywhere, category = "Components")
+	URadialForceComponent* ExplosionForce = nullptr;
+	UPROPERTY(EditDefaultsOnly, category = "Setup")
+	float DestroyDelay = 5.0f;
 };
