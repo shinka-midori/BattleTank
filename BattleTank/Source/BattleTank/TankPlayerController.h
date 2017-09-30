@@ -28,7 +28,12 @@ public:
 	void AimTowardsCrosshair();
 	bool GetSightRayHitLocation(FVector &OutHitLocation) const;
 	bool GetLookDirection(FVector2D, FVector &) const;
-	bool GetLookVectorHitLocation(FVector &, FVector) const;	
+	bool GetLookVectorHitLocation(FVector &, FVector) const;
+
+	virtual void SetPawn(APawn* InPawn) override;
+
+	UFUNCTION()
+	void OnPossessedTankDeath();
 
 private:
 	UPROPERTY(EditDefaultsOnly)
